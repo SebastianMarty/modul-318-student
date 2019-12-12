@@ -43,6 +43,8 @@
             this.lblSuchfeldVonNach = new System.Windows.Forms.Label();
             this.SuchfeldAbbrechen = new System.Windows.Forms.Button();
             this.txtStationSuche = new System.Windows.Forms.TextBox();
+            this.Stationsname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Abfahrtszeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.HauptPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HistoryGridView)).BeginInit();
@@ -168,10 +170,15 @@
             // 
             // StationGridView
             // 
+            this.StationGridView.AllowUserToOrderColumns = true;
             this.StationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StationGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Stationsname,
+            this.Abfahrtszeit});
             this.StationGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StationGridView.Location = new System.Drawing.Point(0, 50);
             this.StationGridView.Name = "StationGridView";
+            this.StationGridView.RowHeadersVisible = false;
             this.StationGridView.RowHeadersWidth = 82;
             this.StationGridView.RowTemplate.Height = 33;
             this.StationGridView.Size = new System.Drawing.Size(751, 325);
@@ -225,6 +232,23 @@
             this.txtStationSuche.Name = "txtStationSuche";
             this.txtStationSuche.Size = new System.Drawing.Size(515, 31);
             this.txtStationSuche.TabIndex = 4;
+            this.txtStationSuche.ModifiedChanged += new System.EventHandler(this.StationSuche_TextChanged);
+            // 
+            // Stationsname
+            // 
+            this.Stationsname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Stationsname.FillWeight = 50F;
+            this.Stationsname.HeaderText = "Name";
+            this.Stationsname.MinimumWidth = 10;
+            this.Stationsname.Name = "Stationsname";
+            // 
+            // Abfahrtszeit
+            // 
+            this.Abfahrtszeit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Abfahrtszeit.FillWeight = 50F;
+            this.Abfahrtszeit.HeaderText = "Abfahrtszeit";
+            this.Abfahrtszeit.MinimumWidth = 10;
+            this.Abfahrtszeit.Name = "Abfahrtszeit";
             // 
             // Form1
             // 
@@ -269,6 +293,8 @@
         private System.Windows.Forms.TextBox txtStationSuche;
         private System.Windows.Forms.Button SuchfeldAbbrechen;
         private System.Windows.Forms.DataGridView StationGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stationsname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrtszeit;
     }
 }
 

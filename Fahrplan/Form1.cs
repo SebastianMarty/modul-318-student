@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SwissTransport;
 
 namespace Fahrplan_
 {
@@ -53,6 +54,25 @@ namespace Fahrplan_
             SuchfeldPanel.Visible = false;
             HauptPanel.Enabled = true;
             HauptPanel.Visible = true;
+        }
+
+        private void StationSuche_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+
+            Transport transport = new Transport();
+
+            foreach (var station in transport.GetStations(tb.Text).StationList)
+            {
+                if (txtStationSuche.Text == null)
+                {
+                    StationGridView.Rows.Clear();
+                }
+                else
+                {
+                    StationGridView.Rows.Add(station.Name);
+                }
+            }
         }
     }
 }
