@@ -16,10 +16,5 @@ namespace Fahrplan_
         {
             InitializeComponent();
         }
-
-        private void OnSuche_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
