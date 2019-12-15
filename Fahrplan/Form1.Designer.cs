@@ -40,7 +40,6 @@
             this.SuchfeldPanel = new System.Windows.Forms.Panel();
             this.StationGridView = new System.Windows.Forms.DataGridView();
             this.Stationsname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Abfahrtszeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblSuchfeldVonNach = new System.Windows.Forms.Label();
             this.SuchfeldAbbrechen = new System.Windows.Forms.Button();
@@ -69,7 +68,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel1.Controls.Add(this.txtVonSuchfeld, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.HauptSuchen, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtNachSuchfeld, 3, 0);
@@ -77,7 +76,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
@@ -88,7 +87,7 @@
             // 
             this.txtVonSuchfeld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVonSuchfeld.Location = new System.Drawing.Point(42, 3);
-            this.txtVonSuchfeld.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtVonSuchfeld.Margin = new System.Windows.Forms.Padding(2);
             this.txtVonSuchfeld.Name = "txtVonSuchfeld";
             this.txtVonSuchfeld.Size = new System.Drawing.Size(88, 20);
             this.txtVonSuchfeld.TabIndex = 0;
@@ -101,7 +100,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HauptSuchen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.HauptSuchen.Location = new System.Drawing.Point(266, 2);
-            this.HauptSuchen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HauptSuchen.Margin = new System.Windows.Forms.Padding(2);
             this.HauptSuchen.Name = "HauptSuchen";
             this.HauptSuchen.Size = new System.Drawing.Size(74, 22);
             this.HauptSuchen.TabIndex = 2;
@@ -113,7 +112,7 @@
             // 
             this.txtNachSuchfeld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNachSuchfeld.Location = new System.Drawing.Point(174, 3);
-            this.txtNachSuchfeld.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNachSuchfeld.Margin = new System.Windows.Forms.Padding(2);
             this.txtNachSuchfeld.Name = "txtNachSuchfeld";
             this.txtNachSuchfeld.Size = new System.Drawing.Size(88, 20);
             this.txtNachSuchfeld.TabIndex = 1;
@@ -147,7 +146,7 @@
             this.HauptPanel.Controls.Add(this.HistoryGridView);
             this.HauptPanel.Controls.Add(this.tableLayoutPanel1);
             this.HauptPanel.Location = new System.Drawing.Point(6, 6);
-            this.HauptPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HauptPanel.Margin = new System.Windows.Forms.Padding(2);
             this.HauptPanel.Name = "HauptPanel";
             this.HauptPanel.Size = new System.Drawing.Size(342, 195);
             this.HauptPanel.TabIndex = 2;
@@ -158,7 +157,7 @@
             this.HistoryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HistoryGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HistoryGridView.Location = new System.Drawing.Point(0, 26);
-            this.HistoryGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HistoryGridView.Margin = new System.Windows.Forms.Padding(2);
             this.HistoryGridView.Name = "HistoryGridView";
             this.HistoryGridView.RowHeadersWidth = 82;
             this.HistoryGridView.RowTemplate.Height = 33;
@@ -171,7 +170,7 @@
             this.SuchfeldPanel.Controls.Add(this.tableLayoutPanel2);
             this.SuchfeldPanel.Enabled = false;
             this.SuchfeldPanel.Location = new System.Drawing.Point(364, 6);
-            this.SuchfeldPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SuchfeldPanel.Margin = new System.Windows.Forms.Padding(2);
             this.SuchfeldPanel.Name = "SuchfeldPanel";
             this.SuchfeldPanel.Size = new System.Drawing.Size(376, 195);
             this.SuchfeldPanel.TabIndex = 3;
@@ -182,17 +181,17 @@
             this.StationGridView.AllowUserToOrderColumns = true;
             this.StationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StationGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stationsname,
-            this.Abfahrtszeit});
+            this.Stationsname});
             this.StationGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StationGridView.Location = new System.Drawing.Point(0, 26);
-            this.StationGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StationGridView.Margin = new System.Windows.Forms.Padding(2);
             this.StationGridView.Name = "StationGridView";
             this.StationGridView.RowHeadersVisible = false;
             this.StationGridView.RowHeadersWidth = 82;
             this.StationGridView.RowTemplate.Height = 33;
             this.StationGridView.Size = new System.Drawing.Size(376, 169);
             this.StationGridView.TabIndex = 1;
+            this.StationGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StationGridView_CellContentClick);
             // 
             // Stationsname
             // 
@@ -201,14 +200,6 @@
             this.Stationsname.HeaderText = "Name";
             this.Stationsname.MinimumWidth = 10;
             this.Stationsname.Name = "Stationsname";
-            // 
-            // Abfahrtszeit
-            // 
-            this.Abfahrtszeit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Abfahrtszeit.FillWeight = 50F;
-            this.Abfahrtszeit.HeaderText = "Abfahrtszeit";
-            this.Abfahrtszeit.MinimumWidth = 10;
-            this.Abfahrtszeit.Name = "Abfahrtszeit";
             // 
             // tableLayoutPanel2
             // 
@@ -221,7 +212,7 @@
             this.tableLayoutPanel2.Controls.Add(this.txtStationSuche, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -246,7 +237,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SuchfeldAbbrechen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SuchfeldAbbrechen.Location = new System.Drawing.Point(303, 2);
-            this.SuchfeldAbbrechen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SuchfeldAbbrechen.Margin = new System.Windows.Forms.Padding(2);
             this.SuchfeldAbbrechen.Name = "SuchfeldAbbrechen";
             this.SuchfeldAbbrechen.Size = new System.Drawing.Size(71, 22);
             this.SuchfeldAbbrechen.TabIndex = 3;
@@ -258,7 +249,7 @@
             // 
             this.txtStationSuche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStationSuche.Location = new System.Drawing.Point(42, 3);
-            this.txtStationSuche.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStationSuche.Margin = new System.Windows.Forms.Padding(2);
             this.txtStationSuche.Name = "txtStationSuche";
             this.txtStationSuche.Size = new System.Drawing.Size(257, 20);
             this.txtStationSuche.TabIndex = 4;
@@ -272,7 +263,7 @@
             this.Controls.Add(this.SuchfeldPanel);
             this.Controls.Add(this.HauptPanel);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.MinimumSize = new System.Drawing.Size(373, 206);
             this.Name = "Form1";
             this.Text = "Fahrplan";
@@ -308,7 +299,6 @@
         private System.Windows.Forms.Button SuchfeldAbbrechen;
         private System.Windows.Forms.DataGridView StationGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stationsname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrtszeit;
     }
 }
 

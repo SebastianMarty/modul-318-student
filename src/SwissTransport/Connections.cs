@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -39,5 +40,17 @@ namespace SwissTransport
         public string Platform { get; set; }
 
         public string RealtimeAvailability { get; set; }
+
+        public DateTime GetDeparture()
+        {
+            DateTime.TryParse(Departure, out var dateTime);
+            return dateTime;
+        }
+
+        public DateTime GetArrival()
+        {
+            DateTime.TryParse(Arrival, out var dateTime);
+            return dateTime;
+        }
     }
 }

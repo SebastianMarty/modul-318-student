@@ -31,10 +31,7 @@ namespace Fahrplan_
 
         private void OnSuchfeld_Click(object sender, EventArgs e)
         {
-            HauptPanel.Enabled = false;
-            HauptPanel.Visible = false;
-            SuchfeldPanel.Enabled = true;
-            SuchfeldPanel.Visible = true;
+            ZuSuchfeld();
 
             TextBox tb = sender as TextBox;
 
@@ -50,10 +47,7 @@ namespace Fahrplan_
 
         private void OnAbbrechen_Click(object sender, EventArgs e)
         {
-            SuchfeldPanel.Enabled = false;
-            SuchfeldPanel.Visible = false;
-            HauptPanel.Enabled = true;
-            HauptPanel.Visible = true;
+            ZuHaupt();
         }
 
         private void StationSuche_TextChanged(object sender, EventArgs e)
@@ -65,6 +59,38 @@ namespace Fahrplan_
             {
                 StationGridView.Rows.Add(station.Name);
             }
+        }
+
+        private void StationGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var selectedStation = StationGridView.CurrentCell.Value;
+
+            if(lblSuchfeldVonNach.Text == "Von:")
+            {
+                txtVonSuchfeld.Text = selectedStation.ToString();
+            }
+            else if (lblSuchfeldVonNach.Text == "Nach:")
+            {
+                txtNachSuchfeld.Text = selectedStation.ToString();
+            }
+
+            ZuHaupt();
+        }
+
+        public void ZuHaupt()
+        {
+            SuchfeldPanel.Enabled = false;
+            SuchfeldPanel.Visible = false;
+            HauptPanel.Enabled = true;
+            HauptPanel.Visible = true;
+        }
+
+        public void ZuSuchfeld()
+        {
+            HauptPanel.Enabled = false;
+            HauptPanel.Visible = false;
+            SuchfeldPanel.Enabled = true;
+            SuchfeldPanel.Visible = true;
         }
     }
 }
