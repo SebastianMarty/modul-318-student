@@ -26,7 +26,7 @@ namespace Fahrplan_
 
         private void OnSuchen_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void OnSuchfeld_Click(object sender, EventArgs e)
@@ -37,12 +37,12 @@ namespace Fahrplan_
             SuchfeldPanel.Visible = true;
 
             TextBox tb = sender as TextBox;
-            
-            if(tb.Name == "txtVonSuchfeld")
+
+            if (tb.Name == "txtVonSuchfeld")
             {
                 lblSuchfeldVonNach.Text = "Von:";
             }
-            else if(tb.Name == "txtNachSuchfeld")
+            else if (tb.Name == "txtNachSuchfeld")
             {
                 lblSuchfeldVonNach.Text = "Nach:";
             }
@@ -58,20 +58,12 @@ namespace Fahrplan_
 
         private void StationSuche_TextChanged(object sender, EventArgs e)
         {
-            TextBox tb = sender as TextBox;
-
             Transport transport = new Transport();
 
-            foreach (var station in transport.GetStations(tb.Text).StationList)
+            StationGridView.Rows.Clear();
+            foreach (var station in transport.GetStations(txtStationSuche.Text).StationList)
             {
-                if (txtStationSuche.Text == null)
-                {
-                    StationGridView.Rows.Clear();
-                }
-                else
-                {
-                    StationGridView.Rows.Add(station.Name);
-                }
+                StationGridView.Rows.Add(station.Name);
             }
         }
     }
