@@ -44,12 +44,23 @@
             this.lblSuchfeldVonNach = new System.Windows.Forms.Label();
             this.SuchfeldAbbrechen = new System.Windows.Forms.Button();
             this.txtStationSuche = new System.Windows.Forms.TextBox();
+            this.VerbindungPanel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.HauptPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HistoryGridView)).BeginInit();
             this.SuchfeldPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StationGridView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.VerbindungPanel.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -68,7 +79,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.Controls.Add(this.txtVonSuchfeld, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.HauptSuchen, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtNachSuchfeld, 3, 0);
@@ -89,7 +100,7 @@
             this.txtVonSuchfeld.Location = new System.Drawing.Point(42, 3);
             this.txtVonSuchfeld.Margin = new System.Windows.Forms.Padding(2);
             this.txtVonSuchfeld.Name = "txtVonSuchfeld";
-            this.txtVonSuchfeld.Size = new System.Drawing.Size(88, 20);
+            this.txtVonSuchfeld.Size = new System.Drawing.Size(87, 20);
             this.txtVonSuchfeld.TabIndex = 0;
             this.txtVonSuchfeld.Click += new System.EventHandler(this.OnSuchfeld_Click);
             // 
@@ -99,10 +110,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HauptSuchen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.HauptSuchen.Location = new System.Drawing.Point(266, 2);
+            this.HauptSuchen.Location = new System.Drawing.Point(264, 2);
             this.HauptSuchen.Margin = new System.Windows.Forms.Padding(2);
             this.HauptSuchen.Name = "HauptSuchen";
-            this.HauptSuchen.Size = new System.Drawing.Size(74, 22);
+            this.HauptSuchen.Size = new System.Drawing.Size(76, 22);
             this.HauptSuchen.TabIndex = 2;
             this.HauptSuchen.Text = "Suchen";
             this.HauptSuchen.UseVisualStyleBackColor = true;
@@ -111,10 +122,10 @@
             // txtNachSuchfeld
             // 
             this.txtNachSuchfeld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNachSuchfeld.Location = new System.Drawing.Point(174, 3);
+            this.txtNachSuchfeld.Location = new System.Drawing.Point(173, 3);
             this.txtNachSuchfeld.Margin = new System.Windows.Forms.Padding(2);
             this.txtNachSuchfeld.Name = "txtNachSuchfeld";
-            this.txtNachSuchfeld.Size = new System.Drawing.Size(88, 20);
+            this.txtNachSuchfeld.Size = new System.Drawing.Size(87, 20);
             this.txtNachSuchfeld.TabIndex = 1;
             this.txtNachSuchfeld.Click += new System.EventHandler(this.OnSuchfeld_Click);
             // 
@@ -133,7 +144,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(134, 6);
+            this.label3.Location = new System.Drawing.Point(133, 6);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
@@ -206,7 +217,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel2.Controls.Add(this.lblSuchfeldVonNach, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.SuchfeldAbbrechen, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtStationSuche, 1, 0);
@@ -236,10 +247,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SuchfeldAbbrechen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SuchfeldAbbrechen.Location = new System.Drawing.Point(303, 2);
+            this.SuchfeldAbbrechen.Location = new System.Drawing.Point(298, 2);
             this.SuchfeldAbbrechen.Margin = new System.Windows.Forms.Padding(2);
             this.SuchfeldAbbrechen.Name = "SuchfeldAbbrechen";
-            this.SuchfeldAbbrechen.Size = new System.Drawing.Size(71, 22);
+            this.SuchfeldAbbrechen.Size = new System.Drawing.Size(76, 22);
             this.SuchfeldAbbrechen.TabIndex = 3;
             this.SuchfeldAbbrechen.Text = "Abbrechen";
             this.SuchfeldAbbrechen.UseVisualStyleBackColor = true;
@@ -251,15 +262,117 @@
             this.txtStationSuche.Location = new System.Drawing.Point(42, 3);
             this.txtStationSuche.Margin = new System.Windows.Forms.Padding(2);
             this.txtStationSuche.Name = "txtStationSuche";
-            this.txtStationSuche.Size = new System.Drawing.Size(257, 20);
+            this.txtStationSuche.Size = new System.Drawing.Size(252, 20);
             this.txtStationSuche.TabIndex = 4;
             this.txtStationSuche.TextChanged += new System.EventHandler(this.StationSuche_TextChanged);
+            // 
+            // VerbindungPanel
+            // 
+            this.VerbindungPanel.Controls.Add(this.dataGridView1);
+            this.VerbindungPanel.Controls.Add(this.tableLayoutPanel3);
+            this.VerbindungPanel.Location = new System.Drawing.Point(529, 293);
+            this.VerbindungPanel.Name = "VerbindungPanel";
+            this.VerbindungPanel.Size = new System.Drawing.Size(637, 419);
+            this.VerbindungPanel.TabIndex = 4;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 7;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel3.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.button2, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.button3, 6, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(637, 26);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 26);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(637, 393);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(83, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Von:";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(280, 6);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Nach:";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(74, 20);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Früher";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.OnFrueher_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(479, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(74, 20);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Später";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.OnSpaeter_Click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button3.Location = new System.Drawing.Point(558, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(77, 22);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Abbrechen";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 619);
+            this.ClientSize = new System.Drawing.Size(1546, 920);
+            this.Controls.Add(this.VerbindungPanel);
             this.Controls.Add(this.SuchfeldPanel);
             this.Controls.Add(this.HauptPanel);
             this.Controls.Add(this.label1);
@@ -276,6 +389,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.StationGridView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.VerbindungPanel.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,6 +416,14 @@
         private System.Windows.Forms.Button SuchfeldAbbrechen;
         private System.Windows.Forms.DataGridView StationGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stationsname;
+        private System.Windows.Forms.Panel VerbindungPanel;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

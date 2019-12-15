@@ -22,6 +22,7 @@ namespace Fahrplan_
         {
             HauptPanel.Dock = DockStyle.Fill;
             SuchfeldPanel.Dock = DockStyle.Fill;
+            VerbindungPanel.Dock = DockStyle.Fill;
         }
 
         private void OnSuchen_Click(object sender, EventArgs e)
@@ -74,11 +75,16 @@ namespace Fahrplan_
                 txtNachSuchfeld.Text = selectedStation.ToString();
             }
 
+            txtStationSuche.Text = "";
+            StationGridView.Rows.Clear();
+
             ZuHaupt();
         }
 
         public void ZuHaupt()
         {
+            VerbindungPanel.Enabled = false;
+            VerbindungPanel.Visible = false;
             SuchfeldPanel.Enabled = false;
             SuchfeldPanel.Visible = false;
             HauptPanel.Enabled = true;
@@ -87,10 +93,32 @@ namespace Fahrplan_
 
         public void ZuSuchfeld()
         {
+            VerbindungPanel.Enabled = false;
+            VerbindungPanel.Visible = false;
             HauptPanel.Enabled = false;
             HauptPanel.Visible = false;
             SuchfeldPanel.Enabled = true;
             SuchfeldPanel.Visible = true;
+        }
+
+        public void ZuVerbindung()
+        {
+            HauptPanel.Enabled = false;
+            HauptPanel.Visible = false;
+            SuchfeldPanel.Enabled = false;
+            SuchfeldPanel.Visible = false;
+            VerbindungPanel.Enabled = true;
+            VerbindungPanel.Visible = true;
+        }
+
+        private void OnFrueher_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnSpaeter_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
