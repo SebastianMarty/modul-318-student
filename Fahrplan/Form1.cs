@@ -11,9 +11,12 @@ using SwissTransport;
 
 namespace Fahrplan_
 {
-    public partial class Form1 : Form
+    public partial class Fahrplan : Form
     {
-        public Form1()
+        private List<string> m_Auswahlmoeglichkeiten = new List<string>();
+        private Transport m_Transport = new Transport();
+
+        public Fahrplan()
         {
             InitializeComponent();
         }
@@ -21,29 +24,50 @@ namespace Fahrplan_
         private void Form1_Load(object sender, EventArgs e)
         {
             HauptPanel.Dock = DockStyle.Fill;
-            SuchfeldPanel.Dock = DockStyle.Fill;
             VerbindungPanel.Dock = DockStyle.Fill;
+        }
+
+        private void OnSuchfeld_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.AutoCompleteSource = AutoCompleteSource.None;
+            tb.AutoCompleteMode = AutoCompleteMode.Suggest;
+            var stations = m_Transport.GetStations(tb.Text);
+
+            if (stations.StationList.Count > 0)
+            {
+                tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+                foreach(var station in stations.StationList)
+                {
+                    collection.Add(station.Name);
+                }
+
+                tb.AutoCompleteCustomSource = collection;
+            }
         }
 
         private void OnSuchen_Click(object sender, EventArgs e)
         {
+            string VonStation = txtVonSuchfeld.Text;
+            string NachStation = txtNachSuchfeld.Text;
 
-        }
+            var connection = m_Transport.GetConnections(VonStation, NachStation);
 
-        private void OnSuchfeld_Click(object sender, EventArgs e)
-        {
-            ZuSuchfeld();
-
-            TextBox tb = sender as TextBox;
-
-            if (tb.Name == "txtVonSuchfeld")
+            foreach(var item in connection.ConnectionList)
             {
-                lblSuchfeldVonNach.Text = "Von:";
+                ConnectionGridView.Rows.Add(item.From.Station.Name,
+                                            item.From.GetDeparture(),
+                                            item.To.Station.Name,
+                                            item.To.GetArrival(),
+                                            item.Duration);
             }
-            else if (tb.Name == "txtNachSuchfeld")
-            {
-                lblSuchfeldVonNach.Text = "Nach:";
-            }
+
+            txtVon.Text = VonStation;
+            txtNach.Text = NachStation;
+
+            ZuVerbindung();
         }
 
         private void OnAbbrechen_Click(object sender, EventArgs e)
@@ -51,62 +75,18 @@ namespace Fahrplan_
             ZuHaupt();
         }
 
-        private void StationSuche_TextChanged(object sender, EventArgs e)
-        {
-            Transport transport = new Transport();
-
-            StationGridView.Rows.Clear();
-            foreach (var station in transport.GetStations(txtStationSuche.Text).StationList)
-            {
-                StationGridView.Rows.Add(station.Name);
-            }
-        }
-
-        private void StationGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var selectedStation = StationGridView.CurrentCell.Value;
-
-            if(lblSuchfeldVonNach.Text == "Von:")
-            {
-                txtVonSuchfeld.Text = selectedStation.ToString();
-            }
-            else if (lblSuchfeldVonNach.Text == "Nach:")
-            {
-                txtNachSuchfeld.Text = selectedStation.ToString();
-            }
-
-            txtStationSuche.Text = "";
-            StationGridView.Rows.Clear();
-
-            ZuHaupt();
-        }
-
         public void ZuHaupt()
         {
             VerbindungPanel.Enabled = false;
             VerbindungPanel.Visible = false;
-            SuchfeldPanel.Enabled = false;
-            SuchfeldPanel.Visible = false;
             HauptPanel.Enabled = true;
             HauptPanel.Visible = true;
-        }
-
-        public void ZuSuchfeld()
-        {
-            VerbindungPanel.Enabled = false;
-            VerbindungPanel.Visible = false;
-            HauptPanel.Enabled = false;
-            HauptPanel.Visible = false;
-            SuchfeldPanel.Enabled = true;
-            SuchfeldPanel.Visible = true;
         }
 
         public void ZuVerbindung()
         {
             HauptPanel.Enabled = false;
             HauptPanel.Visible = false;
-            SuchfeldPanel.Enabled = false;
-            SuchfeldPanel.Visible = false;
             VerbindungPanel.Enabled = true;
             VerbindungPanel.Visible = true;
         }
