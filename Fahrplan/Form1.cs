@@ -53,9 +53,9 @@ namespace Fahrplan_
             string VonStation = txtVonSuchfeld.Text;
             string NachStation = txtNachSuchfeld.Text;
 
-            var connection = m_Transport.GetConnections(VonStation, NachStation);
+            var connection = m_Transport.GetConnections(VonStation, NachStation).ConnectionList;
 
-            foreach(var item in connection.ConnectionList)
+            foreach(var item in connection)
             {
                 ConnectionGridView.Rows.Add(item.From.Station.Name,
                                             item.From.GetDeparture(),
