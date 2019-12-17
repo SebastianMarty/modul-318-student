@@ -23,8 +23,7 @@ namespace Fahrplan_
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            HauptPanel.Dock = DockStyle.Fill;
-            VerbindungPanel.Dock = DockStyle.Fill;
+            
         }
 
         private void OnSuchfeld_TextChanged(object sender, EventArgs e)
@@ -54,42 +53,21 @@ namespace Fahrplan_
             string NachStation = txtNachSuchfeld.Text;
 
             var connection = m_Transport.GetConnections(VonStation, NachStation).ConnectionList;
+            string nbr = "";
 
             foreach(var item in connection)
             {
+                var stationBoard = m_Transport.GetStationBoard(item.From.Station.Name, item.From.Station.Id);
+
+              
                 ConnectionGridView.Rows.Add(item.From.Station.Name,
-                                            item.From.GetDeparture(),
-                                            item.To.Station.Name,
-                                            item.To.GetArrival(),
-                                            item.Duration);
+                                        item.From.GetDeparture().ToString("HH:mm"),
+                                        item.To.Station.Name,
+                                        item.To.GetArrival().ToString("HH:mm"),
+                                        item.From.RealtimeAvailability,
+                                        item.Duration);
             }
-
-            txtVon.Text = VonStation;
-            txtNach.Text = NachStation;
-
-            ZuVerbindung();
-        }
-
-        private void OnAbbrechen_Click(object sender, EventArgs e)
-        {
-            ZuHaupt();
-        }
-
-        public void ZuHaupt()
-        {
-            VerbindungPanel.Enabled = false;
-            VerbindungPanel.Visible = false;
-            HauptPanel.Enabled = true;
-            HauptPanel.Visible = true;
-        }
-
-        public void ZuVerbindung()
-        {
-            HauptPanel.Enabled = false;
-            HauptPanel.Visible = false;
-            VerbindungPanel.Enabled = true;
-            VerbindungPanel.Visible = true;
-        }
+        }        
 
         private void OnFrueher_Click(object sender, EventArgs e)
         {
