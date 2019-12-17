@@ -44,8 +44,10 @@ namespace Fahrplan_
         private void OnSuchen_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            if (btn.Name == VerbimdungenSuchen.Name)
+            if (btn.Name == btn_VerbindungenSuchen.Name)
             {
+                ConnectionGridView.Rows.Clear();
+
                 string nummer = "";
                 string VonStation = txtVonSuchfeld.Text;
                 string NachStation = txtNachSuchfeld.Text;
@@ -65,7 +67,7 @@ namespace Fahrplan_
                                             item.Duration);
                 }
             }
-            else if (btn.Name == StationenSuchen.Name)
+            else if (btn.Name == btn_StationenSuchen.Name)
             {
                 StationenGridView.Rows.Clear();
 
@@ -77,16 +79,10 @@ namespace Fahrplan_
                         StationenGridView.Rows.Add(stationBoard.Station.Name, entry.Number, entry.Stop.Departure, entry.To);
                 }
             }
-        }
-
-        private void OnFrueher_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OnSpaeter_Click(object sender, EventArgs e)
-        {
-
+            //else if(btn.Name == button1.Name)
+            //{
+            //    dataGridView1.Rows.Clear();
+            //}
         }
     }
 }
