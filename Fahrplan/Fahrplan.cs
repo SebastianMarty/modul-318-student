@@ -15,29 +15,49 @@ namespace Fahrplan_
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void OnSuchfeld_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = sender as TextBox;
-            tb.AutoCompleteSource = AutoCompleteSource.None;
-            tb.AutoCompleteMode = AutoCompleteMode.Suggest;
             var stations = m_Transport.GetStations(tb.Text);
 
             if (stations.StationList.Count > 0)
             {
-                tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-                foreach (var station in stations.StationList)
+                if(tb.Name == txtVonSuchfeld.Name)
                 {
-                    collection.Add(station.Name);
+                    VonSuchfeldList.Items.Clear();
+                    VonSuchfeldList.Visible = true;
+                    foreach(var station in stations.StationList)
+                    {
+                        VonSuchfeldList.Items.Add(station.Name);
+                    }
                 }
-
-                tb.AutoCompleteCustomSource = collection;
+                else if (tb.Name == txtNachSuchfeld.Name)
+                {
+                    NachSuchfeldList.Items.Clear();
+                    NachSuchfeldList.Visible = true;
+                    foreach (var station in stations.StationList)
+                    {
+                        NachSuchfeldList.Items.Add(station.Name);
+                    }
+                }
+                else if (tb.Name == txtStationen.Name)
+                {
+                    StationenList.Items.Clear();
+                    StationenList.Visible = true;
+                    foreach (var station in stations.StationList)
+                    {
+                        StationenList.Items.Add(station.Name);
+                    }
+                }
+                else if (tb.Name == txtKartenStation.Name)
+                {
+                    KartenList.Items.Clear();
+                    KartenList.Visible = true;
+                    foreach (var station in stations.StationList)
+                    {
+                        KartenList.Items.Add(station.Name);
+                    }
+                }
             }
         }
 
@@ -79,10 +99,33 @@ namespace Fahrplan_
                         StationenGridView.Rows.Add(stationBoard.Station.Name, entry.Number, entry.Stop.Departure, entry.To);
                 }
             }
-            //else if(btn.Name == button1.Name)
-            //{
-            //    dataGridView1.Rows.Clear();
-            //}
+        }
+
+        private void OnList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            {
+                ListBox lb = sender as ListBox;
+                if (lb.Name == VonSuchfeldList.Name)
+                {
+                    txtVonSuchfeld.Text = lb.SelectedItem.ToString();
+                    VonSuchfeldList.Visible = false;
+                }
+                else if (lb.Name == NachSuchfeldList.Name)
+                {
+                    txtNachSuchfeld.Text = lb.SelectedItem.ToString();
+                    NachSuchfeldList.Visible = false;
+                }
+                else if (lb.Name == StationenList.Name)
+                {
+                    txtStationen.Text = lb.SelectedItem.ToString();
+                    StationenList.Visible = false;
+                }
+                else if (lb.Name == KartenList.Name)
+                {
+                    txtKartenStation.Text = lb.SelectedItem.ToString();
+                    KartenList.Visible = false;
+                }
+            }
         }
     }
 }

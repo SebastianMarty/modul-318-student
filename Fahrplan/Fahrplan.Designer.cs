@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.VerbindungsTab = new System.Windows.Forms.TabPage();
+            this.NachSuchfeldList = new System.Windows.Forms.ListBox();
+            this.VonSuchfeldList = new System.Windows.Forms.ListBox();
             this.ConnectionGridView = new System.Windows.Forms.DataGridView();
             this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Departure = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,11 +57,12 @@
             this.btn_StationenSuchen = new System.Windows.Forms.Button();
             this.lblHauptVon = new System.Windows.Forms.Label();
             this.KartenTab = new System.Windows.Forms.TabPage();
-            this.KartenLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.KartenBrowser = new System.Windows.Forms.WebBrowser();
             this.KartenSucheLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.lblKartenStation = new System.Windows.Forms.Label();
-            this.txt_KartenStation = new System.Windows.Forms.TextBox();
-            this.btn_KartenSuche = new System.Windows.Forms.Button();
+            this.txtKartenStation = new System.Windows.Forms.TextBox();
+            this.StationenList = new System.Windows.Forms.ListBox();
+            this.KartenList = new System.Windows.Forms.ListBox();
             this.tabControl.SuspendLayout();
             this.VerbindungsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionGridView)).BeginInit();
@@ -68,17 +71,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.StationenGridView)).BeginInit();
             this.StationenLayoutPanel.SuspendLayout();
             this.KartenTab.SuspendLayout();
-            this.KartenLayoutPanel.SuspendLayout();
             this.KartenSucheLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(278, 154);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(139, 80);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 25);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
             // 
             // tabControl
@@ -88,22 +90,46 @@
             this.tabControl.Controls.Add(this.KartenTab);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1673, 902);
+            this.tabControl.Size = new System.Drawing.Size(862, 502);
             this.tabControl.TabIndex = 5;
             // 
             // VerbindungsTab
             // 
+            this.VerbindungsTab.Controls.Add(this.NachSuchfeldList);
+            this.VerbindungsTab.Controls.Add(this.VonSuchfeldList);
             this.VerbindungsTab.Controls.Add(this.ConnectionGridView);
             this.VerbindungsTab.Controls.Add(this.VerbindungenLayoutPanel);
-            this.VerbindungsTab.Location = new System.Drawing.Point(8, 39);
+            this.VerbindungsTab.Location = new System.Drawing.Point(4, 22);
+            this.VerbindungsTab.Margin = new System.Windows.Forms.Padding(2);
             this.VerbindungsTab.Name = "VerbindungsTab";
-            this.VerbindungsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.VerbindungsTab.Size = new System.Drawing.Size(1657, 855);
+            this.VerbindungsTab.Padding = new System.Windows.Forms.Padding(2);
+            this.VerbindungsTab.Size = new System.Drawing.Size(854, 476);
             this.VerbindungsTab.TabIndex = 0;
             this.VerbindungsTab.Text = "Verbindungen";
             this.VerbindungsTab.UseVisualStyleBackColor = true;
+            // 
+            // NachSuchfeldList
+            // 
+            this.NachSuchfeldList.FormattingEnabled = true;
+            this.NachSuchfeldList.Location = new System.Drawing.Point(428, 28);
+            this.NachSuchfeldList.Name = "NachSuchfeldList";
+            this.NachSuchfeldList.Size = new System.Drawing.Size(338, 160);
+            this.NachSuchfeldList.TabIndex = 3;
+            this.NachSuchfeldList.Visible = false;
+            this.NachSuchfeldList.SelectedIndexChanged += new System.EventHandler(this.OnList_SelectedIndexChanged);
+            // 
+            // VonSuchfeldList
+            // 
+            this.VonSuchfeldList.FormattingEnabled = true;
+            this.VonSuchfeldList.Location = new System.Drawing.Point(44, 28);
+            this.VonSuchfeldList.Name = "VonSuchfeldList";
+            this.VonSuchfeldList.Size = new System.Drawing.Size(338, 160);
+            this.VonSuchfeldList.TabIndex = 2;
+            this.VonSuchfeldList.Visible = false;
+            this.VonSuchfeldList.SelectedIndexChanged += new System.EventHandler(this.OnList_SelectedIndexChanged);
             // 
             // ConnectionGridView
             // 
@@ -116,12 +142,11 @@
             this.Bus_Zug,
             this.Durration});
             this.ConnectionGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConnectionGridView.Location = new System.Drawing.Point(3, 53);
-            this.ConnectionGridView.Margin = new System.Windows.Forms.Padding(6);
+            this.ConnectionGridView.Location = new System.Drawing.Point(2, 28);
             this.ConnectionGridView.Name = "ConnectionGridView";
             this.ConnectionGridView.RowHeadersVisible = false;
             this.ConnectionGridView.RowHeadersWidth = 82;
-            this.ConnectionGridView.Size = new System.Drawing.Size(1651, 799);
+            this.ConnectionGridView.Size = new System.Drawing.Size(850, 446);
             this.ConnectionGridView.TabIndex = 1;
             // 
             // Von
@@ -169,35 +194,33 @@
             // VerbindungenLayoutPanel
             // 
             this.VerbindungenLayoutPanel.ColumnCount = 5;
-            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.VerbindungenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.VerbindungenLayoutPanel.Controls.Add(this.label4, 0, 0);
             this.VerbindungenLayoutPanel.Controls.Add(this.label5, 2, 0);
             this.VerbindungenLayoutPanel.Controls.Add(this.btn_VerbindungenSuchen, 4, 0);
             this.VerbindungenLayoutPanel.Controls.Add(this.txtVonSuchfeld, 1, 0);
             this.VerbindungenLayoutPanel.Controls.Add(this.txtNachSuchfeld, 3, 0);
             this.VerbindungenLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.VerbindungenLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.VerbindungenLayoutPanel.Margin = new System.Windows.Forms.Padding(6);
+            this.VerbindungenLayoutPanel.Location = new System.Drawing.Point(2, 2);
             this.VerbindungenLayoutPanel.Name = "VerbindungenLayoutPanel";
             this.VerbindungenLayoutPanel.RowCount = 1;
             this.VerbindungenLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.VerbindungenLayoutPanel.Size = new System.Drawing.Size(1651, 50);
+            this.VerbindungenLayoutPanel.Size = new System.Drawing.Size(850, 26);
             this.VerbindungenLayoutPanel.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 12);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(3, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 25);
+            this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Von:";
             // 
@@ -205,10 +228,9 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(746, 12);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(385, 6);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 25);
+            this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "Nach:";
             // 
@@ -218,10 +240,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_VerbindungenSuchen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn_VerbindungenSuchen.Location = new System.Drawing.Point(1488, 4);
-            this.btn_VerbindungenSuchen.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_VerbindungenSuchen.Location = new System.Drawing.Point(768, 2);
+            this.btn_VerbindungenSuchen.Margin = new System.Windows.Forms.Padding(2);
             this.btn_VerbindungenSuchen.Name = "btn_VerbindungenSuchen";
-            this.btn_VerbindungenSuchen.Size = new System.Drawing.Size(159, 42);
+            this.btn_VerbindungenSuchen.Size = new System.Drawing.Size(80, 22);
             this.btn_VerbindungenSuchen.TabIndex = 4;
             this.btn_VerbindungenSuchen.Text = "Suchen";
             this.btn_VerbindungenSuchen.UseVisualStyleBackColor = true;
@@ -230,32 +252,34 @@
             // txtVonSuchfeld
             // 
             this.txtVonSuchfeld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVonSuchfeld.Location = new System.Drawing.Point(84, 9);
-            this.txtVonSuchfeld.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVonSuchfeld.Location = new System.Drawing.Point(42, 3);
+            this.txtVonSuchfeld.Margin = new System.Windows.Forms.Padding(2);
             this.txtVonSuchfeld.Name = "txtVonSuchfeld";
-            this.txtVonSuchfeld.Size = new System.Drawing.Size(652, 31);
+            this.txtVonSuchfeld.Size = new System.Drawing.Size(338, 20);
             this.txtVonSuchfeld.TabIndex = 5;
             this.txtVonSuchfeld.TextChanged += new System.EventHandler(this.OnSuchfeld_TextChanged);
             // 
             // txtNachSuchfeld
             // 
             this.txtNachSuchfeld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNachSuchfeld.Location = new System.Drawing.Point(828, 9);
-            this.txtNachSuchfeld.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNachSuchfeld.Location = new System.Drawing.Point(426, 3);
+            this.txtNachSuchfeld.Margin = new System.Windows.Forms.Padding(2);
             this.txtNachSuchfeld.Name = "txtNachSuchfeld";
-            this.txtNachSuchfeld.Size = new System.Drawing.Size(652, 31);
+            this.txtNachSuchfeld.Size = new System.Drawing.Size(338, 20);
             this.txtNachSuchfeld.TabIndex = 6;
             this.txtNachSuchfeld.TextChanged += new System.EventHandler(this.OnSuchfeld_TextChanged);
             // 
             // StationenTab
             // 
+            this.StationenTab.Controls.Add(this.StationenList);
             this.StationenTab.Controls.Add(this.StationenGridView);
             this.StationenTab.Controls.Add(this.StationenLayoutPanel);
             this.StationenTab.Controls.Add(this.label1);
-            this.StationenTab.Location = new System.Drawing.Point(8, 39);
+            this.StationenTab.Location = new System.Drawing.Point(4, 22);
+            this.StationenTab.Margin = new System.Windows.Forms.Padding(2);
             this.StationenTab.Name = "StationenTab";
-            this.StationenTab.Padding = new System.Windows.Forms.Padding(3);
-            this.StationenTab.Size = new System.Drawing.Size(1657, 855);
+            this.StationenTab.Padding = new System.Windows.Forms.Padding(2);
+            this.StationenTab.Size = new System.Drawing.Size(854, 476);
             this.StationenTab.TabIndex = 1;
             this.StationenTab.Text = "Stationen";
             this.StationenTab.UseVisualStyleBackColor = true;
@@ -270,13 +294,13 @@
             this.Abfahrt,
             this.NachStation});
             this.StationenGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StationenGridView.Location = new System.Drawing.Point(3, 53);
-            this.StationenGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.StationenGridView.Location = new System.Drawing.Point(2, 28);
+            this.StationenGridView.Margin = new System.Windows.Forms.Padding(2);
             this.StationenGridView.Name = "StationenGridView";
             this.StationenGridView.RowHeadersVisible = false;
             this.StationenGridView.RowHeadersWidth = 82;
             this.StationenGridView.RowTemplate.Height = 33;
-            this.StationenGridView.Size = new System.Drawing.Size(1651, 799);
+            this.StationenGridView.Size = new System.Drawing.Size(850, 446);
             this.StationenGridView.TabIndex = 2;
             // 
             // StationsName
@@ -310,28 +334,28 @@
             // StationenLayoutPanel
             // 
             this.StationenLayoutPanel.ColumnCount = 3;
-            this.StationenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.StationenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.StationenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.StationenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
+            this.StationenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.StationenLayoutPanel.Controls.Add(this.txtStationen, 1, 0);
             this.StationenLayoutPanel.Controls.Add(this.btn_StationenSuchen, 2, 0);
             this.StationenLayoutPanel.Controls.Add(this.lblHauptVon, 0, 0);
             this.StationenLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StationenLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.StationenLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.StationenLayoutPanel.Location = new System.Drawing.Point(2, 2);
+            this.StationenLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.StationenLayoutPanel.Name = "StationenLayoutPanel";
             this.StationenLayoutPanel.RowCount = 1;
-            this.StationenLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.StationenLayoutPanel.Size = new System.Drawing.Size(1651, 50);
+            this.StationenLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.StationenLayoutPanel.Size = new System.Drawing.Size(850, 26);
             this.StationenLayoutPanel.TabIndex = 1;
             // 
             // txtStationen
             // 
             this.txtStationen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStationen.Location = new System.Drawing.Point(104, 9);
-            this.txtStationen.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStationen.Location = new System.Drawing.Point(52, 3);
+            this.txtStationen.Margin = new System.Windows.Forms.Padding(2);
             this.txtStationen.Name = "txtStationen";
-            this.txtStationen.Size = new System.Drawing.Size(1378, 31);
+            this.txtStationen.Size = new System.Drawing.Size(714, 20);
             this.txtStationen.TabIndex = 0;
             this.txtStationen.TextChanged += new System.EventHandler(this.OnSuchfeld_TextChanged);
             // 
@@ -341,10 +365,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_StationenSuchen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn_StationenSuchen.Location = new System.Drawing.Point(1490, 4);
-            this.btn_StationenSuchen.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_StationenSuchen.Location = new System.Drawing.Point(770, 2);
+            this.btn_StationenSuchen.Margin = new System.Windows.Forms.Padding(2);
             this.btn_StationenSuchen.Name = "btn_StationenSuchen";
-            this.btn_StationenSuchen.Size = new System.Drawing.Size(157, 42);
+            this.btn_StationenSuchen.Size = new System.Drawing.Size(78, 22);
             this.btn_StationenSuchen.TabIndex = 2;
             this.btn_StationenSuchen.Text = "Suchen";
             this.btn_StationenSuchen.UseVisualStyleBackColor = true;
@@ -354,94 +378,102 @@
             // 
             this.lblHauptVon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblHauptVon.AutoSize = true;
-            this.lblHauptVon.Location = new System.Drawing.Point(7, 12);
-            this.lblHauptVon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHauptVon.Location = new System.Drawing.Point(3, 6);
+            this.lblHauptVon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHauptVon.Name = "lblHauptVon";
-            this.lblHauptVon.Size = new System.Drawing.Size(85, 25);
+            this.lblHauptVon.Size = new System.Drawing.Size(43, 13);
             this.lblHauptVon.TabIndex = 0;
             this.lblHauptVon.Text = "Station:";
             // 
             // KartenTab
             // 
-            this.KartenTab.Controls.Add(this.KartenLayoutPanel);
-            this.KartenTab.Location = new System.Drawing.Point(8, 39);
+            this.KartenTab.Controls.Add(this.KartenList);
+            this.KartenTab.Controls.Add(this.KartenBrowser);
+            this.KartenTab.Controls.Add(this.KartenSucheLayoutPanel);
+            this.KartenTab.Location = new System.Drawing.Point(4, 22);
+            this.KartenTab.Margin = new System.Windows.Forms.Padding(2);
             this.KartenTab.Name = "KartenTab";
-            this.KartenTab.Padding = new System.Windows.Forms.Padding(3);
-            this.KartenTab.Size = new System.Drawing.Size(1657, 855);
+            this.KartenTab.Padding = new System.Windows.Forms.Padding(2);
+            this.KartenTab.Size = new System.Drawing.Size(854, 476);
             this.KartenTab.TabIndex = 2;
             this.KartenTab.Text = "Karte";
             this.KartenTab.UseVisualStyleBackColor = true;
             // 
-            // KartenLayoutPanel
+            // KartenBrowser
             // 
-            this.KartenLayoutPanel.ColumnCount = 1;
-            this.KartenLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.KartenLayoutPanel.Controls.Add(this.KartenSucheLayoutPanel, 0, 0);
-            this.KartenLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.KartenLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.KartenLayoutPanel.Name = "KartenLayoutPanel";
-            this.KartenLayoutPanel.RowCount = 2;
-            this.KartenLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.KartenLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.KartenLayoutPanel.Size = new System.Drawing.Size(503, 849);
-            this.KartenLayoutPanel.TabIndex = 0;
+            this.KartenBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KartenBrowser.Location = new System.Drawing.Point(2, 30);
+            this.KartenBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.KartenBrowser.Name = "KartenBrowser";
+            this.KartenBrowser.Size = new System.Drawing.Size(850, 444);
+            this.KartenBrowser.TabIndex = 1;
             // 
             // KartenSucheLayoutPanel
             // 
-            this.KartenSucheLayoutPanel.ColumnCount = 3;
-            this.KartenSucheLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.KartenSucheLayoutPanel.ColumnCount = 2;
+            this.KartenSucheLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.KartenSucheLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.KartenSucheLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.KartenSucheLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.KartenSucheLayoutPanel.Controls.Add(this.lblKartenStation, 0, 0);
-            this.KartenSucheLayoutPanel.Controls.Add(this.txt_KartenStation, 1, 0);
-            this.KartenSucheLayoutPanel.Controls.Add(this.btn_KartenSuche, 2, 0);
-            this.KartenSucheLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KartenSucheLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.KartenSucheLayoutPanel.Controls.Add(this.txtKartenStation, 1, 0);
+            this.KartenSucheLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.KartenSucheLayoutPanel.Location = new System.Drawing.Point(2, 2);
+            this.KartenSucheLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.KartenSucheLayoutPanel.Name = "KartenSucheLayoutPanel";
             this.KartenSucheLayoutPanel.RowCount = 1;
             this.KartenSucheLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.KartenSucheLayoutPanel.Size = new System.Drawing.Size(497, 54);
+            this.KartenSucheLayoutPanel.Size = new System.Drawing.Size(850, 28);
             this.KartenSucheLayoutPanel.TabIndex = 0;
             // 
             // lblKartenStation
             // 
             this.lblKartenStation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblKartenStation.AutoSize = true;
-            this.lblKartenStation.Location = new System.Drawing.Point(3, 14);
+            this.lblKartenStation.Location = new System.Drawing.Point(2, 7);
+            this.lblKartenStation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblKartenStation.Name = "lblKartenStation";
-            this.lblKartenStation.Size = new System.Drawing.Size(94, 25);
+            this.lblKartenStation.Size = new System.Drawing.Size(46, 13);
             this.lblKartenStation.TabIndex = 0;
             this.lblKartenStation.Text = "Station:";
             // 
-            // txt_KartenStation
+            // txtKartenStation
             // 
-            this.txt_KartenStation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_KartenStation.Location = new System.Drawing.Point(103, 11);
-            this.txt_KartenStation.Name = "txt_KartenStation";
-            this.txt_KartenStation.Size = new System.Drawing.Size(231, 31);
-            this.txt_KartenStation.TabIndex = 1;
+            this.txtKartenStation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtKartenStation.Location = new System.Drawing.Point(52, 4);
+            this.txtKartenStation.Margin = new System.Windows.Forms.Padding(2);
+            this.txtKartenStation.Name = "txtKartenStation";
+            this.txtKartenStation.Size = new System.Drawing.Size(796, 20);
+            this.txtKartenStation.TabIndex = 1;
+            this.txtKartenStation.TextChanged += new System.EventHandler(this.OnSuchfeld_TextChanged);
             // 
-            // btn_KartenSuche
+            // StationenList
             // 
-            this.btn_KartenSuche.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_KartenSuche.Location = new System.Drawing.Point(340, 3);
-            this.btn_KartenSuche.Name = "btn_KartenSuche";
-            this.btn_KartenSuche.Size = new System.Drawing.Size(154, 48);
-            this.btn_KartenSuche.TabIndex = 2;
-            this.btn_KartenSuche.Text = "button1";
-            this.btn_KartenSuche.UseVisualStyleBackColor = true;
+            this.StationenList.FormattingEnabled = true;
+            this.StationenList.Location = new System.Drawing.Point(54, 28);
+            this.StationenList.Name = "StationenList";
+            this.StationenList.Size = new System.Drawing.Size(338, 160);
+            this.StationenList.TabIndex = 3;
+            this.StationenList.Visible = false;
+            // 
+            // KartenList
+            // 
+            this.KartenList.FormattingEnabled = true;
+            this.KartenList.Location = new System.Drawing.Point(54, 31);
+            this.KartenList.Name = "KartenList";
+            this.KartenList.Size = new System.Drawing.Size(338, 160);
+            this.KartenList.TabIndex = 3;
+            this.KartenList.Visible = false;
             // 
             // Fahrplan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1673, 902);
+            this.ClientSize = new System.Drawing.Size(862, 502);
             this.Controls.Add(this.tabControl);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1200, 800);
+            this.Margin = new System.Windows.Forms.Padding(1);
+            this.MinimumSize = new System.Drawing.Size(608, 435);
             this.Name = "Fahrplan";
             this.Text = "Fahrplan";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl.ResumeLayout(false);
             this.VerbindungsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionGridView)).EndInit();
@@ -453,7 +485,6 @@
             this.StationenLayoutPanel.ResumeLayout(false);
             this.StationenLayoutPanel.PerformLayout();
             this.KartenTab.ResumeLayout(false);
-            this.KartenLayoutPanel.ResumeLayout(false);
             this.KartenSucheLayoutPanel.ResumeLayout(false);
             this.KartenSucheLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -489,11 +520,14 @@
         private System.Windows.Forms.TextBox txtStationen;
         private System.Windows.Forms.Button btn_StationenSuchen;
         private System.Windows.Forms.Label lblHauptVon;
-        private System.Windows.Forms.TableLayoutPanel KartenLayoutPanel;
         private System.Windows.Forms.TableLayoutPanel KartenSucheLayoutPanel;
         private System.Windows.Forms.Label lblKartenStation;
-        private System.Windows.Forms.TextBox txt_KartenStation;
-        private System.Windows.Forms.Button btn_KartenSuche;
+        private System.Windows.Forms.TextBox txtKartenStation;
+        private System.Windows.Forms.WebBrowser KartenBrowser;
+        private System.Windows.Forms.ListBox VonSuchfeldList;
+        private System.Windows.Forms.ListBox NachSuchfeldList;
+        private System.Windows.Forms.ListBox StationenList;
+        private System.Windows.Forms.ListBox KartenList;
     }
 }
 
