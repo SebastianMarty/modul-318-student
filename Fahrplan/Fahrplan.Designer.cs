@@ -47,6 +47,7 @@
             this.txtVonSuchfeld = new System.Windows.Forms.TextBox();
             this.txtNachSuchfeld = new System.Windows.Forms.TextBox();
             this.StationenTab = new System.Windows.Forms.TabPage();
+            this.StationenList = new System.Windows.Forms.ListBox();
             this.StationenGridView = new System.Windows.Forms.DataGridView();
             this.StationsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bus_Zug_Station = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,12 +58,11 @@
             this.btn_StationenSuchen = new System.Windows.Forms.Button();
             this.lblHauptVon = new System.Windows.Forms.Label();
             this.KartenTab = new System.Windows.Forms.TabPage();
+            this.KartenList = new System.Windows.Forms.ListBox();
             this.KartenBrowser = new System.Windows.Forms.WebBrowser();
             this.KartenSucheLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.lblKartenStation = new System.Windows.Forms.Label();
             this.txtKartenStation = new System.Windows.Forms.TextBox();
-            this.StationenList = new System.Windows.Forms.ListBox();
-            this.KartenList = new System.Windows.Forms.ListBox();
             this.tabControl.SuspendLayout();
             this.VerbindungsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionGridView)).BeginInit();
@@ -284,6 +284,16 @@
             this.StationenTab.Text = "Stationen";
             this.StationenTab.UseVisualStyleBackColor = true;
             // 
+            // StationenList
+            // 
+            this.StationenList.FormattingEnabled = true;
+            this.StationenList.Location = new System.Drawing.Point(54, 28);
+            this.StationenList.Name = "StationenList";
+            this.StationenList.Size = new System.Drawing.Size(338, 160);
+            this.StationenList.TabIndex = 3;
+            this.StationenList.Visible = false;
+            this.StationenList.SelectedIndexChanged += new System.EventHandler(this.OnList_SelectedIndexChanged);
+            // 
             // StationenGridView
             // 
             this.StationenGridView.AllowUserToOrderColumns = true;
@@ -399,6 +409,16 @@
             this.KartenTab.Text = "Karte";
             this.KartenTab.UseVisualStyleBackColor = true;
             // 
+            // KartenList
+            // 
+            this.KartenList.FormattingEnabled = true;
+            this.KartenList.Location = new System.Drawing.Point(54, 31);
+            this.KartenList.Name = "KartenList";
+            this.KartenList.Size = new System.Drawing.Size(338, 160);
+            this.KartenList.TabIndex = 3;
+            this.KartenList.Visible = false;
+            this.KartenList.SelectedIndexChanged += new System.EventHandler(this.OnList_SelectedIndexChanged);
+            // 
             // KartenBrowser
             // 
             this.KartenBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -445,24 +465,6 @@
             this.txtKartenStation.Size = new System.Drawing.Size(796, 20);
             this.txtKartenStation.TabIndex = 1;
             this.txtKartenStation.TextChanged += new System.EventHandler(this.OnSuchfeld_TextChanged);
-            // 
-            // StationenList
-            // 
-            this.StationenList.FormattingEnabled = true;
-            this.StationenList.Location = new System.Drawing.Point(54, 28);
-            this.StationenList.Name = "StationenList";
-            this.StationenList.Size = new System.Drawing.Size(338, 160);
-            this.StationenList.TabIndex = 3;
-            this.StationenList.Visible = false;
-            // 
-            // KartenList
-            // 
-            this.KartenList.FormattingEnabled = true;
-            this.KartenList.Location = new System.Drawing.Point(54, 31);
-            this.KartenList.Name = "KartenList";
-            this.KartenList.Size = new System.Drawing.Size(338, 160);
-            this.KartenList.TabIndex = 3;
-            this.KartenList.Visible = false;
             // 
             // Fahrplan
             // 

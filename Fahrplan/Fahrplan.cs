@@ -22,11 +22,11 @@ namespace Fahrplan_
 
             if (stations.StationList.Count > 0)
             {
-                if(tb.Name == txtVonSuchfeld.Name)
+                if (tb.Name == txtVonSuchfeld.Name)
                 {
                     VonSuchfeldList.Items.Clear();
                     VonSuchfeldList.Visible = true;
-                    foreach(var station in stations.StationList)
+                    foreach (var station in stations.StationList)
                     {
                         VonSuchfeldList.Items.Add(station.Name);
                     }
@@ -124,6 +124,27 @@ namespace Fahrplan_
                 {
                     txtKartenStation.Text = lb.SelectedItem.ToString();
                     KartenList.Visible = false;
+                    
+                    var ort = txtKartenStation.Text;
+                    var stations = m_Transport.GetStations(txtKartenStation.Text);
+
+                    foreach (var station in stations.StationList)
+                    {
+                        if (station.Name == ort)
+                        {
+                            var YCoordinate = station.Coordinate.YCoordinate;
+                            var XCoordinate = station.Coordinate.XCoordinate;
+
+                            if (XCoordinate == 0 || YCoordinate == 0)
+                            {
+                                MessageBox.Show("Dieser Ort kann leider nicht angezeigt werden, bitte wählen Sie einen anderen.");
+                                break;
+                            }
+                            var BingMapsUrl = $"http://bing.com/maps/default.aspx?cp={XCoordinate}~{YCoordinate}&lvl=20";
+                            KartenBrowser.Navigate(BingMapsUrl);
+                        }
+                        
+                    }
                 }
             }
         }
