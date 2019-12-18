@@ -69,7 +69,12 @@ namespace Fahrplan_
             
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "\nUngültige Eingabe", "Error", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+
+                if (ex == new TimeoutException())
+                {
+                    MessageBox.Show(ex.Message + "\nBitte stellen Sie sicher, dass Sie mit dem Internet verbunden sind.", "Error", MessageBoxButtons.OK);
+                }
             }
         }
 
