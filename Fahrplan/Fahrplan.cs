@@ -183,7 +183,7 @@ namespace Fahrplan_
                             //Wenn eine der Koordinaten 0 ist kann der Ort auf der Karte nicht angezeigt werden.
                             if (XCoordinate == 0 || YCoordinate == 0)
                             {
-                                MessageBox.Show("Dieser Ort kann leider nicht angezeigt werden, bitte wählen Sie einen anderen.", "Fehler", MessageBoxButtons.OK);
+                                MessageBox.Show("Dieser Ort kann leider nicht angezeigt werden, bitte wählen Sie einen anderen aus.", "Fehler", MessageBoxButtons.OK);
                                 break;
                             }
                             //Die Werte der 2 Koordinaten Variablen an die URL übergeben und den Ort im Web-Browser-Element anzeigen lassen.
