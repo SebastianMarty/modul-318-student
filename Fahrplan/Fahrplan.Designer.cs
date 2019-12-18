@@ -43,10 +43,6 @@
             this.StationenTab = new System.Windows.Forms.TabPage();
             this.StationenList = new System.Windows.Forms.ListBox();
             this.StationenGridView = new System.Windows.Forms.DataGridView();
-            this.StationsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bus_Zug_Station = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Abfahrt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NachStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StationenLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.txtStationen = new System.Windows.Forms.TextBox();
             this.btn_StationenSuchen = new System.Windows.Forms.Button();
@@ -63,6 +59,10 @@
             this.Arrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bus_Zug = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Durration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StationsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bus_Zug_Station = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Abfahrt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NachStation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.VerbindungsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionGridView)).BeginInit();
@@ -281,34 +281,6 @@
             this.StationenGridView.Size = new System.Drawing.Size(1700, 860);
             this.StationenGridView.TabIndex = 2;
             // 
-            // StationsName
-            // 
-            this.StationsName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.StationsName.HeaderText = "Name:";
-            this.StationsName.MinimumWidth = 10;
-            this.StationsName.Name = "StationsName";
-            // 
-            // Bus_Zug_Station
-            // 
-            this.Bus_Zug_Station.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Bus_Zug_Station.HeaderText = "Bus/Zug";
-            this.Bus_Zug_Station.MinimumWidth = 10;
-            this.Bus_Zug_Station.Name = "Bus_Zug_Station";
-            // 
-            // Abfahrt
-            // 
-            this.Abfahrt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Abfahrt.HeaderText = "Abfahrt";
-            this.Abfahrt.MinimumWidth = 10;
-            this.Abfahrt.Name = "Abfahrt";
-            // 
-            // NachStation
-            // 
-            this.NachStation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NachStation.HeaderText = "Nach:";
-            this.NachStation.MinimumWidth = 10;
-            this.NachStation.Name = "NachStation";
-            // 
             // StationenLayoutPanel
             // 
             this.StationenLayoutPanel.ColumnCount = 3;
@@ -479,6 +451,34 @@
             this.Durration.MinimumWidth = 6;
             this.Durration.Name = "Durration";
             // 
+            // StationsName
+            // 
+            this.StationsName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.StationsName.HeaderText = "Name:";
+            this.StationsName.MinimumWidth = 10;
+            this.StationsName.Name = "StationsName";
+            // 
+            // Bus_Zug_Station
+            // 
+            this.Bus_Zug_Station.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Bus_Zug_Station.HeaderText = "Bus/Zug:";
+            this.Bus_Zug_Station.MinimumWidth = 10;
+            this.Bus_Zug_Station.Name = "Bus_Zug_Station";
+            // 
+            // Abfahrt
+            // 
+            this.Abfahrt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Abfahrt.HeaderText = "Abfahrt:";
+            this.Abfahrt.MinimumWidth = 10;
+            this.Abfahrt.Name = "Abfahrt";
+            // 
+            // NachStation
+            // 
+            this.NachStation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NachStation.HeaderText = "Nach:";
+            this.NachStation.MinimumWidth = 10;
+            this.NachStation.Name = "NachStation";
+            // 
             // Fahrplan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -521,10 +521,6 @@
         private System.Windows.Forms.TextBox txtVonSuchfeld;
         private System.Windows.Forms.TextBox txtNachSuchfeld;
         private System.Windows.Forms.DataGridView StationenGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StationsName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bus_Zug_Station;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NachStation;
         private System.Windows.Forms.TableLayoutPanel StationenLayoutPanel;
         private System.Windows.Forms.TextBox txtStationen;
         private System.Windows.Forms.Button btn_StationenSuchen;
@@ -543,6 +539,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Arrival;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bus_Zug;
         private System.Windows.Forms.DataGridViewTextBoxColumn Durration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StationsName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bus_Zug_Station;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NachStation;
     }
 }
 
