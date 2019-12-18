@@ -41,12 +41,14 @@ namespace SwissTransport
 
         public string RealtimeAvailability { get; set; }
 
+        //Gibt die Abfahrtszeit als Date-Time zurück.
         public DateTime GetDeparture()
         {
             DateTime.TryParse(Departure, out var dateTime);
             return dateTime;
         }
 
+        //Gibt die Ankunftszeit als Date-Time zurück.
         public DateTime GetArrival()
         {
             DateTime.TryParse(Arrival, out var dateTime);
