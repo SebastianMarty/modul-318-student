@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace SwissTransport
 {
@@ -45,20 +47,29 @@ namespace SwissTransport
 
         public Connections GetConnections(string fromStation, string toStation)
         {
-            fromStation = System.Uri.EscapeDataString(fromStation);
-            toStation = System.Uri.EscapeDataString(toStation);
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStation);
-            var response = request.GetResponse();
-            var responseStream = response.GetResponseStream();
-
-            if (responseStream != null)
+            //Bei Eingabe eines Falschen Parameters stürzt das Programm ohne Try Catch ab.
+            try
             {
-                var readToEnd = new StreamReader(responseStream).ReadToEnd();
-                var connections =
-                    JsonConvert.DeserializeObject<Connections>(readToEnd);
-                return connections;
-            }
+                fromStation = System.Uri.EscapeDataString(fromStation);
+                toStation = System.Uri.EscapeDataString(toStation);
+                var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStation);
+                var response = request.GetResponse();
+                var responseStream = response.GetResponseStream();
 
+                if (responseStream != null)
+                {
+                    var readToEnd = new StreamReader(responseStream).ReadToEnd();
+                    var connections =
+                        JsonConvert.DeserializeObject<Connections>(readToEnd);
+                    return connections;
+                }
+            }
+            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+            
             return null;
         }
 
