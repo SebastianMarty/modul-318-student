@@ -20,6 +20,10 @@ namespace Fahrplan_
             TextBox tb = sender as TextBox;
             var stations = m_Transport.GetStations(tb.Text);
 
+            //Überprüfen, ob Stationen geladen wurden und dann überprüfen, welche Textbox verwendet wird.
+            //Alle Vorschläge der gesuchten Station sollen in die zugehörige Listbox geladen werden.
+            //Die Listboxen werden bei Auswahl der zugehörigen Textbox eingeblendet.
+            //Zuerst werden die Listboxen geleert, damit nur gewünschte Suchergebnisse angezeigt werden.
             if (stations.StationList.Count > 0)
             {
                 if (tb.Name == txtVonSuchfeld.Name)
@@ -64,21 +68,28 @@ namespace Fahrplan_
         private void OnSuchen_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
+
+            //Überprüfen, welcher Button gedrückt wurde
             if (btn.Name == btn_VerbindungenSuchen.Name)
             {
+                //Zuerst wird die Data-Grid-View geleert, damit nur gewünschte Suchergebnisse angezeigt werden.
                 ConnectionGridView.Rows.Clear();
 
+                //Die gewünschte Station von den "Von" und "Nach" Suchfeldern werden in lokale Variablen gespeichert und es wird eine neue Liste erstellt mit den gesuchten Verbindungen.
                 string nummer = "";
                 string VonStation = txtVonSuchfeld.Text;
                 string NachStation = txtNachSuchfeld.Text;
                 var connection = m_Transport.GetConnections(VonStation, NachStation).ConnectionList;
 
+                //Jedes element in connention wird durchgegangen und die gewünschten Werte werden der Data-Grid-View hinzugefügt.
                 foreach (var item in connection)
                 {
                     var stationBoard = m_Transport.GetStationBoard(item.To.Station.Name, item.To.Station.Id);
 
+                    //Bus- und Zug-Nummern werden an den String nummer übergeben.
                     nummer = stationBoard.Entries.FirstOrDefault().Number;
 
+                    //Das Date-Time von GetDeparture und GetArrival werden im Format Stunden und Minuten ausgegeben.
                     ConnectionGridView.Rows.Add(item.From.Station.Name,
                                             item.From.GetDeparture().ToString("HH:mm"),
                                             item.To.Station.Name,
@@ -89,11 +100,14 @@ namespace Fahrplan_
             }
             else if (btn.Name == btn_StationenSuchen.Name)
             {
+                //Zuerst wird die Data-Grid-View geleert, damit nur gewünschte Suchergebnisse angezeigt werden.
                 StationenGridView.Rows.Clear();
 
+                //Die gewünschte Station und eine Liste der passenden Stationen werden in lokalen Variablen gespeichert.
                 string StationSuche = txtStationen.Text;
                 var stationBoard = m_Transport.GetStationBoard(StationSuche, "");
 
+                //Jeder Eintrag in stationBoard.Entries wird durchgegangen und in der Data-Grid-View ausgegeben.
                 foreach (var entry in stationBoard.Entries)
                 {
                         StationenGridView.Rows.Add(stationBoard.Station.Name, entry.Number, entry.Stop.Departure, entry.To);
@@ -105,6 +119,9 @@ namespace Fahrplan_
         {
             {
                 ListBox lb = sender as ListBox;
+
+                //Zuerst wird überprüft von welcher ListBox der Event aufgerufen wurde.
+                //Dann soll die Selektion in der passenden TextBox angezeigt werden und die ListBox wird ausgeblendet.
                 if (lb.Name == VonSuchfeldList.Name)
                 {
                     txtVonSuchfeld.Text = lb.SelectedItem.ToString();
@@ -128,22 +145,25 @@ namespace Fahrplan_
                     var ort = txtKartenStation.Text;
                     var stations = m_Transport.GetStations(txtKartenStation.Text);
 
+                    //Es wird die passende Station zur Suche herausgesucht.
                     foreach (var station in stations.StationList)
                     {
                         if (station.Name == ort)
                         {
+                            //Koordinaten der ausgewählten Station in lokale Variablen Speichern.
                             var YCoordinate = station.Coordinate.YCoordinate;
                             var XCoordinate = station.Coordinate.XCoordinate;
 
+                            //Wenn eine der Koordinaten 0 ist kann der Ort auf der Karte nicht angezeigt werden.
                             if (XCoordinate == 0 || YCoordinate == 0)
                             {
-                                MessageBox.Show("Dieser Ort kann leider nicht angezeigt werden, bitte wählen Sie einen anderen.");
+                                MessageBox.Show("Dieser Ort kann leider nicht angezeigt werden, bitte wählen Sie einen anderen.", "Fehler", MessageBoxButtons.OK);
                                 break;
                             }
+                            //Die Werte der 2 Koordinaten Variablen an die URL übergeben und den Ort im Web-Browser-Element anzeigen lassen.
                             var BingMapsUrl = $"http://bing.com/maps/default.aspx?cp={XCoordinate}~{YCoordinate}&lvl=20";
                             KartenBrowser.Navigate(BingMapsUrl);
                         }
-                        
                     }
                 }
             }
